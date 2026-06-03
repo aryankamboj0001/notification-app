@@ -1,16 +1,138 @@
-# React + Vite
+# Campus Notification System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+Campus Notification System is a React-based web application that fetches notifications from the AffordMed Evaluation Service API and displays them in a Priority Inbox.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The application authenticates users using a Bearer Token, retrieves notifications from the protected API, and displays the most important notifications based on priority and recency.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+### Stage 1
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* Authentication using Auth API
+* Fetch notifications from protected API
+* Priority Inbox implementation
+* Top 10 notifications display
+* Notification sorting based on:
+
+  * Placement (Highest Priority)
+  * Result
+  * Event (Lowest Priority)
+* Timestamp-based ordering for notifications of the same type
+
+### Stage 2
+
+* Responsive React UI
+* Filter notifications by type
+
+  * All
+  * Placement
+  * Result
+  * Event
+* Read / Unread notification tracking
+* Pagination support
+* Local Storage integration for viewed notifications
+
+---
+
+## Technology Stack
+
+* React
+* JavaScript
+* Axios
+* Vite
+
+---
+
+## Project Structure
+
+```text
+notification-app/
+│
+├── src/
+│   ├── pages/
+│   │   └── AllNotifications.jsx
+│   ├── services/
+│   │   └── api.js
+│   └── App.jsx
+│
+├── Notification_System_Design.md
+├── stage1-output.png
+├── package.json
+└── README.md
+```
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/aryankamboj0001/notification-app.git
+```
+
+Move into project directory:
+
+```bash
+cd notification-app
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the project:
+
+```bash
+npm run dev
+```
+
+Open:
+
+```text
+http://localhost:5173
+```
+
+---
+
+## Priority Calculation
+
+Priority values:
+
+| Type      | Priority |
+| --------- | -------- |
+| Placement | 3        |
+| Result    | 2        |
+| Event     | 1        |
+
+Notifications are sorted first by priority and then by timestamp.
+
+---
+
+## API Endpoints Used
+
+### Authentication
+
+```http
+POST /evaluation-service/auth
+```
+
+### Notifications
+
+```http
+GET /evaluation-service/notifications
+```
+
+---
+
+## Author
+
+Aryan Kumar
+
+Roll No: 2330700
